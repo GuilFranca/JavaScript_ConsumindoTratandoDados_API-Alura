@@ -1,0 +1,25 @@
+Para instalar o JSON Server utilize o comando a seguir:
+npm install -g json-server@0.17.4
+
+Permitindo política de execução de scripts (apenas Windows)
+- Abra o powershell como adm e digite o comando a seguir para verifircar política de execução atual:
+Get-ExecutionPolicy
+
+- Caso esteja como "Restricted", está configuração impede a execução de scripts.
+- Execute o comando a seguir para permitir a execução de scripts no seu computador:
+Set-ExecutionPolicy RemoteSigned
+
+-O PowerShell pode solicitar confirmação para realizar a operação. Pressione "S" (Sim) ou "Y" (Yes) dependendo da linguagem do seu terminal e pressione Enter para confirmar.
+
+Ao final do CURSO, é uma boa prática reverter a política de execução de scripts para o vaor original, para garantir a segurança do sistema.
+Set-ExecutionPolicy Restricted
+
+Mas caso você queira utilizar o JSON Server novamente, será necessário alterar a política de execução para "RemoteSigned" mais uma vez.
+
+
+Colocando o JSON Server em prática:
+
+Abra o terminal integrado do VSCode e execute o seguinte comando para inciar o JSON Server e usá-lo com o arquivo videos.json.
+json-server --watch backend/videos.json
+
+--watch: Este é um dos argumentos que você pode fornecer opcionalmente ao comando JSON Server. A opção --watch é usada para especificar que o servidor deve ficar "observando" um arquivo JSON específico para quaisquer mudanças. Isso significa que se você modificar o arquivo videos.json, o JSON Server automaticamente recarregará os dados para refletir as alterações.
