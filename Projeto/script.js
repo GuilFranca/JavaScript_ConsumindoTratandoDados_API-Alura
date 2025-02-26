@@ -1,10 +1,14 @@
 const containerVideos = document.querySelector('.videos__container');
 
-// fetch é uma função de busca do JS
-// Será uilizado o link do terminal(Resources) para buscar os dados da API
-const api = fetch("http://localhost:3000/videos") // Irá retornar uma Promise(Uma função assíncrona)
-.then(res => res.json()) // .then espera a api ser carregada para executar o que tem dentro dela, que no caso é transformar a resposta da mesma em um arquivo json
-.then((videos) =>
+
+async function buscarEMostrarVideos() {
+    // fetch é uma função de busca do JS
+    // Será uilizado o link do terminal(Resources) para buscar os dados da API
+    // await fará com que a busca seja feita para depois o nosso código da função assincrona sej executado, não sendo mais necessário o .then
+    const busca = await fetch("http://localhost:3000/videos"); // Irá retornar uma Promise(Uma função assíncrona)
+    const videos = await busca.json();
+    //.then(res => res.json()) // .then espera a api ser carregada para executar o que tem dentro dela, que no caso é transformar a resposta da mesma em  um arquivo json
+    //.then((videos) =>
     videos.forEach((video) => {
         containerVideos.innerHTML += `
         <li class="videos__item">
@@ -17,8 +21,11 @@ const api = fetch("http://localhost:3000/videos") // Irá retornar uma Promise(U
         </li>
         `;
     })
-)
-// Serve para pegar possiveis erros
-.catch((error) => {
-    containerVideos.innerHTML = `<p>Houver um erro ao carregar os vídeos: ${error}</p>`;
-})
+    // Serve para pegar possiveis erros
+    // .catch((error) => {
+    //     containerVideos.innerHTML = `<p>Houver um erro ao carregar os vídeos: ${error}</p>`;
+    // })
+}
+
+buscarEMostrarVideos();
+
