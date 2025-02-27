@@ -1,0 +1,52 @@
+API(Interface de Programação de Aplicação).
+JSON Server é uma API fake.
+
+Para instalar o JSON Server utilize o comando a seguir:
+npm install -g json-server@0.17.4
+
+Permitindo política de execução de scripts (apenas Windows)
+- Abra o powershell como adm e digite o comando a seguir para verifircar política de execução atual:
+Get-ExecutionPolicy
+
+- Caso esteja como "Restricted", está configuração impede a execução de scripts.
+- Execute o comando a seguir para permitir a execução de scripts no seu computador:
+Set-ExecutionPolicy RemoteSigned
+
+-O PowerShell pode solicitar confirmação para realizar a operação. Pressione "S" (Sim) ou "Y" (Yes) dependendo da linguagem do seu terminal e pressione Enter para confirmar.
+
+Ao final do CURSO, é uma boa prática reverter a política de execução de scripts para o vaor original, para garantir a segurança do sistema.
+Set-ExecutionPolicy Restricted
+
+Mas caso você queira utilizar o JSON Server novamente, será necessário alterar a política de execução para "RemoteSigned" mais uma vez.
+
+
+Colocando o JSON Server em prática:
+
+Abra o terminal integrado do VSCode e execute o seguinte comando para inciar o JSON Server e usá-lo com o arquivo videos.json.
+json-server --watch backend/videos.json
+
+--watch: Este é um dos argumentos que você pode fornecer opcionalmente ao comando JSON Server. A opção --watch é usada para especificar que o servidor deve ficar "observando" um arquivo JSON específico para quaisquer mudanças. Isso significa que se você modificar o arquivo videos.json, o JSON Server automaticamente recarregará os dados para refletir as alterações.
+
+Após utilizar o comando:
+
+>> json-server --watch backend/videos.json
+   
+  \{^_^}/ hi!
+
+  Loading backend/videos.json
+  Done
+
+  Resources
+  http://localhost:3000/videos
+
+  Home
+  http://localhost:3000
+
+  Type s + enter at any time to create a snapshot of the database
+  Watching...
+
+  GET /db 200 2.458 ms - -
+  GET /__rules 404 2.759 ms - 2
+  GET /db 304 0.541 ms - -
+  GET /__rules 404 4.122 ms - 2
+  GET /videos 200 21.639 ms - -
